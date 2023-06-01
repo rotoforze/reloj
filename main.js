@@ -55,7 +55,7 @@ var p = 0;
 function animacion(){
     const e = document.getElementById("circulo");
     clearInterval(id);
-    id = setInterval(frame, 5);
+    id = setInterval(frame, 10);
     function frame() {
         if (tempA == 0){
             document.getElementById("boton").removeEventListener("click", animacion);
