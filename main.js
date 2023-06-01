@@ -49,37 +49,37 @@ function sw(){
     }
 }
 //Animación botón
-var id = null;
-var tempA = 0;
-var p = 0;
+var id = null; //Definimos una variable que va a ser usada para medir tiempo
+var tempA = 0; //Variable para saber en que tema estamos
+var p = 0; //Posición del botón
 function animacion(){
-    const e = document.getElementById("circulo");
-    clearInterval(id);
-    id = setInterval(frame, 10);
+    const e = document.getElementById("circulo"); //Acortar código
+    clearInterval(id); //Para que no se lopee
+    id = setInterval(frame, 10); //Añadimos un intervalo que llame a frame cada 10ms
     function frame() {
         if (tempA == 0){
-            document.getElementById("boton").removeEventListener("click", animacion);
-            document.getElementById("boton").removeEventListener("click", sw);
+            document.getElementById("boton").removeEventListener("click", animacion); //Quitamos el EventListener
+            document.getElementById("boton").removeEventListener("click", sw); //Quitamos el EventListener
             if (p == 33){
-                clearInterval(id);
-                document.getElementById("boton").addEventListener("click", animacion);
-                document.getElementById("boton").addEventListener("click", sw);
-                tempA = 1;
+                clearInterval(id); //Dejamos en null de nuevo el tiempo porque la animación ya terminó
+                document.getElementById("boton").addEventListener("click", animacion); //Añadimos el EventListener
+                document.getElementById("boton").addEventListener("click", sw); //Añadimos el EventListener
+                tempA = 1; //Cambiamos la variable para saber que la próxima vez ha de seguir para alante y no ejecutar esto
             } else {
-                p = p +1.5;
-                e.style.left = p+"px";
+                p = p +1.5; //Le sumamos para que vaya a la derecha
+                e.style.left = p+"px"; //Cambiamos el css para aplicar la animación
             }
         }else if(tempA == 1){
-            document.getElementById("boton").removeEventListener("click", animacion);
-            document.getElementById("boton").removeEventListener("click", sw);
+            document.getElementById("boton").removeEventListener("click", animacion); //Quitamos el EventListener
+            document.getElementById("boton").removeEventListener("click", sw); //Quitamos el EventListener
             if (p == 0){
-                clearInterval(id);
-                document.getElementById("boton").addEventListener("click", animacion);
-                document.getElementById("boton").addEventListener("click", sw);
-                tempA = 0;
+                clearInterval(id);  //Dejamos en null de nuevo el tiempo porque la animación ya terminó
+                document.getElementById("boton").addEventListener("click", animacion); //Añadimos el EventListener
+                document.getElementById("boton").addEventListener("click", sw); //Añadimos el EventListener
+                tempA = 0; //Cambiamos la variable para saber que la próxima vez ha de seguir para alante y no ejecutar esto
             } else {
-                p = p -1.5;
-                e.style.left = p+"px";
+                p = p -1.5; //Restamos para que vaya a la derecha
+                e.style.left = p+"px"; //Cambiamos el css para aplicar la animación
             }
         }
     }
